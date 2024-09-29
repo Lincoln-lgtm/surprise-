@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black; /* Black background */
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Hide overflow */
+        }
+        .heart {
+            width: 20px; /* Width of heart */
+            height: 20px; /* Height of heart */
+            background-color: red; /* Heart color */
+            transform: rotate(-45deg);
+            margin: 5px; /* Spacing between hearts */
+            position: relative;
+            animation: float 3s infinite; /* Floating animation */
+        }
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px; /* Width of heart */
+            height: 20px; /* Height of heart */
+            background-color: red; /* Heart color */
+            border-radius: 50%; /* Make it circular */
+        }
+        .heart:before {
+            top: -10px; /* Positioning for the top circle */
+            left: 0;
+        }
+        .heart:after {
+            left: 10px; /* Positioning for the right circle */
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; /* White text color */
+            font-size: 40px; /* Font size */
+            font-weight: bold;
+            text-align: center; /* Center the text */
+            opacity: 0; /* Start invisible */
+            animation: fadeIn 5s forwards; /* Fade-in animation */
+            z-index: 10; /* Make sure message is on top */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">Surprise! You found 1000 hearts!</div>
+
+    <script>
+        // Create 1000 hearts
+        for (let i = 0; i < 1000; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            document.body.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
+
